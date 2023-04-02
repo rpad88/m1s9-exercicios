@@ -2,12 +2,11 @@ const Place = require("../../src/models/Place");
 
 module.exports = {
     index: (req, res) => {
-        res.status(200).json({msg: 'ok'})
+        res.status(200)
     },
-    places: async (req, res) => {
+    newPlace: async (req, res) => {
+        if(!req.body) return res.status(401)
         try {
-            if(!req.body.name) return res.status(401)
-
             const place = {
                 name: req.body.name,
                 phone: req.body.phone,
@@ -27,14 +26,38 @@ module.exports = {
                 const newPlace = await Place.create(place)
                 res.status(201).json(newPlace)
             } else {
-                res.status(400).json({error: `${place.name} already exists`})
+                res.status(400).json({error: `${place.name} already exists.`})
             }
         } catch (error) {
             console.log(error.message)
-            res.status(500).json({message: "não conseguimos processar a sua requisição"})
+            res.status(500).json({message: "Unable to process your request"})
         }
     },
-    placesList: (req, res) => {
-        res.status(200).json({msg: 'ok'})
+    placesList: async (req, res) => {
+        const allPlaces = await Place.findAll()
+        res.status(200).json(allPlaces)
+    },
+    deletePlace: async (req, res) => {
+        if (!req.params.id) return res.status(406).json({message: "Id necessary."})
+        const contains = await Place.findOne({
+            where: {
+                id: req.params.id
+        }})
+        if(!contains) return res.status(412).json({message: "Id not exists"})
+        try {
+            await Place.destroy(
+                {where:
+                    {id: req.params.id},
+                    force: true
+                }                    
+            )
+            res.status(200).json({message: "deleted"})
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({message: "Unable to process your request"})
+        }
+    },
+    editPlace: async (req, res) => {
+
     }
 }

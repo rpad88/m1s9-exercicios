@@ -8,7 +8,7 @@ app.use(express.json()) //obrigatório
 
 const routesList = [
     '/',
-    '/places',
+    '/places'
 ]
 
 connection.authenticate()
