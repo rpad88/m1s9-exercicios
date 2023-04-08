@@ -7,8 +7,10 @@ const app = express()
 app.use(express.json()) //obrigatório
 
 const routesList = [
+    '/',
     '/places',
-    '/users'
+    '/users',
+    '/sessions'
 ]
 
 connection.authenticate()
@@ -17,4 +19,4 @@ console.log('connection stablished successfully');
 
 app.use(routesList, routes)
 
-app.listen(3333, () => console.log('Aplicação online'))
+app.listen(3333, () => console.log('✔ Aplicação online'))

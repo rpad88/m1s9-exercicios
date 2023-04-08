@@ -10,7 +10,8 @@ async function newUser (req, res) {
             password: req.body.password
         }
 
-        const hasEmailOnDatabase = User.findOne({where: {email: user.email}})
+        const hasEmailOnDatabase = await User.findOne({where: {email: user.email}})
+        
         if(!hasEmailOnDatabase) {
             const newUser = await User.create(user)
             const {password, ...rest} = newUser

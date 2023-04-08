@@ -1,5 +1,6 @@
 // M1S10 Ex 1
 const { Sequelize } = require('sequelize')
+const bcript = require('bcrypt')
 const connection = require('../database')
 
 // Model da tabela user
@@ -29,6 +30,13 @@ const User = connection.define('users', {
     password: {
         type: Sequelize.STRING,
         allowNull: false
+    }
+})
+
+User.beforeSave(async (user) => {
+    if(user.changed('password')){
+        const hashedPassword = await bcript.hash(user.password, 10)
+        user.password = hashedPassword
     }
 })
 
