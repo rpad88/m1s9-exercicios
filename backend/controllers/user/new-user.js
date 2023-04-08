@@ -15,6 +15,7 @@ async function newUser (req, res) {
         if(!hasEmailOnDatabase) {
             const newUser = await User.create(user)
             const {password, ...rest} = newUser
+            console.log(password, rest)
             return res.status(201).json(rest)
         }
         res.status(400).json({message: `${user.email} already exists`})

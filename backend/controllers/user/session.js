@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken")
+const bcrypt = require('bcrypt')
 const User = require("../../../src/models/User")
 
 async function session(req, res) {
@@ -9,6 +10,13 @@ async function session(req, res) {
         })
 
         if (!userInDatabase) return res.status(404).json(({message: "User doesn't exists"}))
+
+        const passwordIsValid = await bcrypt.compare(
+            req.body.password,
+            userInDatabase.password
+        ) //return TRUE or FALSE
+
+        if(!passwordIsValid) return res.status(404).json({message: "credenciais incorretas"})
 
         const token = jwt.sign(
             { id: req.body.id },
