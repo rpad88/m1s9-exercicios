@@ -8,18 +8,21 @@ const deletePlace = require('../controllers/place/delete-place')
 const editPlace = require('../controllers/place/edit-place')
 const newUser = require('../controllers/user/new-user')
 const session = require('../controllers/user/session')
+
+// MIDDLEWARES
+const validaToken = require('../../src/middlewares/valida-token')
 // const index = require('../controllers')
 
 // GET
 // router.get('/', index)
-// router.get('/places', placesList)
+router.get('/places', validaToken, placesList) //list all places
 // POST
-router.post('/places', newPlace)
-router.post('/users', newUser)
-router.post('/sessions', session )
+router.post('/places', validaToken, newPlace) //create a place
+router.post('/users', validaToken, newUser) //create a new user
+router.post('/sessions', session ) //Login
 // DELETE
-router.delete('/places/:id', deletePlace)
+router.delete('/places/:id', validaToken, deletePlace) //delete a place
 // PUT
-router.put('/places/:id', editPlace)
+router.put('/places/:id', validaToken, editPlace) //edit a place
 
 module.exports = router
