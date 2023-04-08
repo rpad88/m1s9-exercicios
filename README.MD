@@ -1,11 +1,18 @@
 # Lab365
 ## Floripa Mais tec
 
-Exercícios do Módulo 1 Semana 9 | Places API
+ *Places API*
+
+Exercícios do Módulo 1 Semanas 9 e 10
 
 ### Build with
- - <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" width="40" height="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="40" height="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original-wordmark.svg" width="40" height="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" width="40" height="40"/>
- - MVC Architecture
+ - [NodeJS](https://nodejs.org/)
+ - [Express](https://expressjs.com/pt-br/) - Framework para o desenvolvimento de aplicações JavaScript com o Node.js.
+ - [Sequelize](https://sequelize.org/) - O Sequelize abstrai os comandos de operações de SQL, e faz com que possamos usar linguagem de programação que já estamos usando no backend.
+ - [Postgre SQL](https://www.postgresql.org/) - Banco de dados.
+ - [bcrypt](https://www.npmjs.com/package/bcrypt) - Criptografa as senhas.
+ - [yup](https://www.npmjs.com/package/yup) - Validação de parâmetros recebidos na API.
+ - [jwt](https://jwt.io/) - Tem como objetivo transmitir ou armazenar de forma compacta e segura objetos JSON entre diferentes aplicações.
 
 ### How to test
 execute `npm start` on terminal, the app will run on `localhost:3333/`

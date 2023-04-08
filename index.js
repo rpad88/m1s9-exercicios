@@ -7,8 +7,8 @@ const app = express()
 app.use(express.json()) //obrigatório
 
 const routesList = [
-    '/',
-    '/places'
+    '/places',
+    '/users'
 ]
 
 connection.authenticate()
