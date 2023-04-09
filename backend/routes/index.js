@@ -11,6 +11,7 @@ const session = require('../controllers/user/session')
 
 // MIDDLEWARES
 const validaToken = require('../../src/middlewares/valida-token')
+const validaUser = require('../../src/middlewares/valida-user')
 // const index = require('../controllers')
 
 // GET
@@ -19,7 +20,7 @@ router.get('/places', validaToken, placesList) //list all places
 // POST
 router.post('/places', validaToken, newPlace) //create a place
 router.post('/users', validaToken, newUser) //create a new user
-router.post('/sessions', session ) //Login
+router.post('/sessions', validaUser, session ) //Login
 // DELETE
 router.delete('/places/:id', validaToken, deletePlace) //delete a place
 // PUT
